@@ -1,0 +1,23 @@
+<div class="container-card">
+    <div *ngFor="let movie of data">
+        <app-movie-card [inputData]="movie" (addFavorites)="handleAddFavorites($event)"
+            (addWatchList)="handleAddWatchList($event)">
+        </app-movie-card>
+    </div>
+
+
+</div>
+<div class="footer-block">
+    <div class="movie-favorites">
+        <h1>Favorites</h1>
+        <ul>
+            <li *ngFor="let favorite of arrFavorites">{{ favorite }}</li>
+        </ul>
+    </div>
+    <div class="movie-watchList">
+        <h1>WatchList</h1>
+        <ul>
+            <li *ngFor="let watchList of arrWatchList">{{ watchList }}</li>
+        </ul>
+    </div>
+</div>
