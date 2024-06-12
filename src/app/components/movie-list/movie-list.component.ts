@@ -10,7 +10,7 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
   styleUrl: './movie-list.component.scss'
 })
 export class MovieListComponent {
-  data: any = [
+  public data: any = [
     {
       "adult": false,
       "backdrop_path": "/fqv8v6AycXKsivp1T5yKtLbGXce.jpg",
@@ -91,20 +91,20 @@ export class MovieListComponent {
       "vote_count": 341
     }
   ]  
-  arrFavorites: string[] = [];
-  arrWatchList: string[] = [];
+  public Favorites: string[] = [];
+  public WatchList: string[] = [];
 
   handleAddFavorites(title: string): void {
-    if (!this.arrFavorites.includes(title)) {
-      this.arrFavorites.push(title);
+    if (!this.Favorites.includes(title)) {
+      this.Favorites.push(title);
     } else {
       console.log(`${title} is already in favorites`);
     }
   }
 
   handleAddWatchList(title: string): void {
-    if (!this.arrWatchList.includes(title)) {
-      this.arrWatchList.push(title);
+    if (!this.WatchList.includes(title)) {
+      this.WatchList.push(title);
     } else {
       console.log(`${title} is already in watch list`);
     }
