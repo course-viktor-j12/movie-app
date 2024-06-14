@@ -1,9 +1,13 @@
 .block-content{
+    .block-name{
+        h2{
+            min-height: 54px;
+        }
+    }
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 300px;
-    height: 300px;
     margin: 20px;
     padding: 5px;
     list-style: none;
@@ -14,6 +18,7 @@
     border: 1px solid;
     color: #8cbee5;
     &:hover{
+        cursor: pointer;
         box-shadow: 0px 0px 6px 5px #8cbee5;
     }
 }

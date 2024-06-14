@@ -2,6 +2,7 @@
     <div *ngFor="let movie of data">
         <app-movie-card [inputData]="movie" (addFavorites)="handleAddFavorites($event)"
             (addWatchList)="handleAddWatchList($event)">
+            Movie:
         </app-movie-card>
     </div>
 
