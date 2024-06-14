@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RowLengthPipe } from '../../pipes/rowLength/row-length.pipe';
 import { CommonModule } from '@angular/common';
-import { MovieDurationPipe } from '../../pipes/movieDuration/movie-duration.pipe';
+import { RowLengthPipe } from '../../pipes/rowLength/row-length.pipe';
+import { TransformTimePipe } from '../../pipes/transformTime/transform-time.pipe';
 
 @Component({
   selector: 'app-movie-card',
   standalone: true,
-  imports: [CommonModule, RowLengthPipe, MovieDurationPipe],
+  imports: [CommonModule, RowLengthPipe, TransformTimePipe],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss'
 })

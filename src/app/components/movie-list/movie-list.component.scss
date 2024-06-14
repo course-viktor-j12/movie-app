@@ -14,6 +14,15 @@
     border: 1px solid #8cbee5;
     h2{
         text-align: center;
+        font-family: sans-serif;
         color: rgb(52, 115, 209);
+    }
+    p{
+        text-align: center;
+        font-weight: bold;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    li{
+        list-style: square;
     }
 }

@@ -12,20 +12,27 @@ import { mockData } from '../../../mock-data';
 })
 export class MovieListComponent {
   public data = mockData;
-  public Favorites: string[] = [];
-  public WatchList: string[] = [];
+  public favorites: string[] = [];
+  public watchLists: string[] = [];
 
-  handleAddFavorites(title: string): void {
-    if (!this.Favorites.includes(title)) {
-      this.Favorites.push(title);
+  public trackById(item: any): number {
+    return item.id;
+  };
+  public trackByIndex(index: number): number{
+    return index;
+  };
+
+   handleAddFavorites(title: string): void {
+    if (!this.favorites.includes(title)) {
+      this.favorites.push(title);
     } else {
       console.log(`${title} is already in favorites`);
     }
   }
 
   handleAddWatchList(title: string): void {
-    if (!this.WatchList.includes(title)) {
-      this.WatchList.push(title);
+    if (!this.watchLists.includes(title)) {
+      this.watchLists.push(title);
     } else {
       console.log(`${title} is already in watch list`);
     }
