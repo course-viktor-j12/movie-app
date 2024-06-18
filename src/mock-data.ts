@@ -1,4 +1,4 @@
-[
+export const mockData = [
   {
     "adult": false,
     "backdrop_path": "/fqv8v6AycXKsivp1T5yKtLbGXce.jpg",
@@ -17,7 +17,8 @@
     "title": "Kingdom of the Planet of the Apes",
     "video": false,
     "vote_average": 6.932,
-    "vote_count": 807
+    "vote_count": 807,
+    "duration": 203
   },
   {
     "adult": false,
@@ -37,7 +38,8 @@
     "title": "Civil War",
     "video": false,
     "vote_average": 7.1,
-    "vote_count": 1296
+    "vote_count": 1296,
+    "duration": 98
   },
   {
     "adult": false,
@@ -57,7 +59,8 @@
     "title": "Godzilla x Kong: The New Empire",
     "video": false,
     "vote_average": 7.233,
-    "vote_count": 2519
+    "vote_count": 2519,
+    "duration": 208
   },
   {
     "adult": false,
@@ -76,6 +79,7 @@
     "title": "Tarot",
     "video": false,
     "vote_average": 6.5,
-    "vote_count": 341
+    "vote_count": 341,
+    "duration": 120
   }
 ]
