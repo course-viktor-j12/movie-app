@@ -1,13 +1,20 @@
 <div class="block-content">
-    <div class="block-name">
-        <p><ng-content></ng-content></p>
-        <img [src]="inputData.poster_path" alt="inputData.title">
-        <h2>{{ inputData.title }}</h2>
+    <p-card [header]="inputData.title" [style]="{ width: '360px' }">
+        <ng-template pTemplate="header">
+            <img [src]="inputData.poster_path" alt="inputData.title" />
+        </ng-template>
         <p>{{ inputData.overview | rowLength:120 }}</p>
         <p><i>Duration: {{ inputData.duration | transformTime }}</i></p>
-    </div>
-    <div class="block-button">
-        <button class="btn btn-primary" (click)="addToWatchList()">Add to watchList</button>
-        <button class="btn btn-primary" (click)="addToFavorites()">Add to favorites</button>
-    </div>
+        <ng-template pTemplate="footer">
+            <div class="flex mt-1">
+                <p-button label="watchList" severity="secondary" class="w-full" styleClass="w-full" (click)="addToWatchList()">
+                    <i class="pi pi-plus-circle" style="color: white"></i>
+                </p-button>
+                <p-button label="favorites" class="w-full" styleClass="w-full" (click)="addToFavorites()" >
+                    <i class="pi pi-plus-circle" style="color: white"></i>
+                </p-button>
+            </div>
+        </ng-template>
+    </p-card>
 </div>
+

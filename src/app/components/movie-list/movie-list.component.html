@@ -11,10 +11,19 @@
 <div class="footer-block">
     <div class="movie-watchList">
         <h2>WatchLists</h2>
+        <div *ngFor="let watchList of watchLists; trackBy: trackByIndex">
+            <div class="watchList-item">
+                <div class="watchList-img-block">
+                    <img [src]="watchList.poster_path" alt="watchList.title" />
+                </div>
+                <div class="watchList-content-block">
+                    <p class="m-0">{{ watchList.title }}</p>
+                    <p>{{watchList.overview | rowLength:50}}</p>
+                </div>
+            </div>
+        </div>
         <p *ngIf="watchLists.length === 0">No movies in watch list yet.</p>
-        <ul>
-            <li *ngFor="let watchList of watchLists; trackBy: trackByIndex">{{ watchList.title }}</li>
-        </ul>
+        
     </div>
     <div class="movie-favorites">
         <h2>Favorites</h2>
