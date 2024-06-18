@@ -2,39 +2,41 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { mockData } from '../../../mock-data';
+import { Movie } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-movie-list',
   standalone: true,
   imports: [CommonModule, MovieCardComponent],
   templateUrl: './movie-list.component.html',
-  styleUrl: './movie-list.component.scss'
+  styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent {
   public data = mockData;
-  public favorites: string[] = [];
-  public watchLists: string[] = [];
+  public favorites: Movie[] = [];
+  public watchLists: Movie[] = [];
 
-  public trackById(item: any): number {
+  public trackById(index: number, item: Movie): number {
     return item.id;
-  };
-  public trackByIndex(index: number): number{
-    return index;
-  };
+  }
 
-   handleAddFavorites(title: string): void {
-    if (!this.favorites.includes(title)) {
-      this.favorites.push(title);
+  public trackByIndex(index: number): number {
+    return index;
+  }
+
+  handleAddFavorites(movie: Movie): void {
+    if (!this.favorites.some(fav => fav.id === movie.id)) {
+      this.favorites.push(movie);
     } else {
-      console.log(`${title} is already in favorites`);
+      console.log(`${movie.title} is already in favorites`);
     }
   }
 
-  handleAddWatchList(title: string): void {
-    if (!this.watchLists.includes(title)) {
-      this.watchLists.push(title);
+  handleAddWatchLists(movie: Movie): void {
+    if (!this.watchLists.some(watch => watch.id === movie.id)) {
+      this.watchLists.push(movie);
     } else {
-      console.log(`${title} is already in watch list`);
+      console.log(`${movie.title} is already in watch list`);
     }
   }
 }

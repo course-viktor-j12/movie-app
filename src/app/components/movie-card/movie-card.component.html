@@ -1,6 +1,7 @@
 <div class="block-content">
     <div class="block-name">
-        <ng-content></ng-content>
+        <p><ng-content></ng-content></p>
+        <img [src]="inputData.poster_path" alt="inputData.title">
         <h2>{{ inputData.title }}</h2>
         <p>{{ inputData.overview | rowLength:120 }}</p>
         <p><i>Duration: {{ inputData.duration | transformTime }}</i></p>

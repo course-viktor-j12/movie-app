@@ -1,7 +1,7 @@
 <div class="container-card">
     <div *ngFor="let movie of data; trackBy: trackById">
         <app-movie-card [inputData]="movie" (addFavorites)="handleAddFavorites($event)"
-            (addWatchList)="handleAddWatchList($event)">
+            (addWatchList)="handleAddWatchLists($event)">
             Movie:
         </app-movie-card>
     </div>
@@ -10,17 +10,17 @@
 </div>
 <div class="footer-block">
     <div class="movie-watchList">
-        <h2>WatchList</h2>
+        <h2>WatchLists</h2>
         <p *ngIf="watchLists.length === 0">No movies in watch list yet.</p>
         <ul>
-            <li *ngFor="let watchList of watchLists; trackBy: trackByIndex">{{ watchList }}</li>
+            <li *ngFor="let watchList of watchLists; trackBy: trackByIndex">{{ watchList.title }}</li>
         </ul>
     </div>
     <div class="movie-favorites">
         <h2>Favorites</h2>
         <p *ngIf="favorites.length === 0">No favorites added yet.</p>
         <ul>
-            <li *ngFor="let favorite of favorites; trackBy: trackByIndex">{{ favorite }}</li>
+            <li *ngFor="let favorite of favorites; trackBy: trackByIndex">{{ favorite.title }}</li>
         </ul>
     </div>
 </div>
