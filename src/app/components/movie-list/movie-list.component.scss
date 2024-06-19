@@ -10,7 +10,7 @@
 }
 .movie-favorites, .movie-watchList{
     width: 400px;
-    height: 200px;
+    padding: 20px;
     border: 1px solid #8cbee5;
     h2{
         text-align: center;
@@ -28,7 +28,24 @@
     img{
         max-width: 50px;
     }
-    p-card{
+    .watchList-item,
+    .favorite-item{
         display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px solid;
+        .watchList-img-block,
+        .favorite-img-block{
+            margin-right: 15px;
+        }
+        .watchList-content-block,
+        .favorite-content-block{
+            h5{
+                margin: 0px;
+            }
+            p{
+                text-align: start;
+                font-size: 15px;
+            }
+        }
     }
 }
