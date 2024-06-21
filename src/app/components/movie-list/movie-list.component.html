@@ -11,7 +11,7 @@
 <div class="footer-block">
     <div class="movie-watchList">
         <h2>WatchLists</h2>
-        <div *ngFor="let watchList of watchLists; trackBy: trackByIndex">
+        <div *ngFor="let watchList of watchLists; trackBy: trackById">
             <div class="watchList-item">
                 <div class="watchList-img-block">
                     <img [src]="watchList.poster_path" alt="watchList.title" />
@@ -26,7 +26,7 @@
     </div>
     <div class="movie-favorites">
         <h2>Favorites</h2>
-        <div *ngFor="let favorite of favorites; trackBy: trackByIndex">
+        <div *ngFor="let favorite of favorites; trackBy: trackById">
             <div class="favorite-item">
                 <div class="favorite-img-block">
                     <img [src]="favorite.poster_path" alt="favorite.title" />

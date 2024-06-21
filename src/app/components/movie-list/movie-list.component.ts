@@ -23,10 +23,6 @@ export class MovieListComponent {
     return item.id;
   }
 
-  public trackByIndex(index: number): number {
-    return index;
-  }
-
   handleAddFavorites(movie: Movie): void {
     if (!this.favorites.some(fav => fav.id === movie.id)) {
       this.favorites.push(movie);
