@@ -1,0 +1,32 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    .header-logo{
+        h2{   
+            min-width: 150px;
+            text-align: center;}
+    }
+}
+.header-tabs{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .tabs{
+        width: 50%;
+        text-align: center;
+    }
+}
+.main{
+    display: flex;
+    .main-menu{
+        width: 30%;
+        ul{
+            li{
+                display: block;
+                height: 30px;
+                list-style: none;
+            }
+        }
+    }
+}

@@ -1,10 +1,10 @@
 <div class="block-content">
     <p-card [header]="inputData.title" [style]="{ width: '360px' }">
         <ng-template pTemplate="header">
-            <img [src]="inputData.poster_path" alt="inputData.title" />
+            <img [src]="'https://image.tmdb.org/t/p/w500/' + inputData.poster_path" alt="inputData.title" />
         </ng-template>
-        <p>{{ inputData.overview | rowLength:120 }}</p>
-        <p><i>Duration: {{ inputData.duration | transformTime }}</i></p>
+        <p>{{ inputData.overview | rowLength:100 }}</p>
+        <!-- <p><i>Duration: {{ inputData.duration | transformTime }}</i></p> -->
         <ng-template pTemplate="footer">
             <div class="flex mt-1">
                 <p-button label="watchList" severity="secondary" class="w-full" styleClass="w-full" (click)="addToWatchList()">

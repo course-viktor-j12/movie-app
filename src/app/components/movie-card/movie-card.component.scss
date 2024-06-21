@@ -19,6 +19,9 @@
 img{
     max-width: 100px;
 }
+:host ::ng-deep .p-card-title{
+    min-height: 54px;
+}
 :host ::ng-deep .p-button {
     margin-right: 5px;
     padding: 5px 10px;
