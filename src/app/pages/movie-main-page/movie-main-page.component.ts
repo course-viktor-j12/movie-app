@@ -8,7 +8,7 @@ import { MenuModule } from 'primeng/menu';
 @Component({
   selector: 'app-movie-main-page',
   standalone: true,
-  imports: [MovieListComponent, RouterModule, TabMenuModule ],
+  imports: [MovieListComponent, RouterModule, TabMenuModule, MenuModule ],
   templateUrl: './movie-main-page.component.html',
   styleUrl: './movie-main-page.component.scss'
 })
@@ -21,11 +21,11 @@ export class MovieMainPageComponent implements OnInit{
       { label: 'Favorites', icon: 'pi pi-heart', routerLink: ['/list/favorites'] },
       { label: 'Watch List', icon: 'pi pi-list', routerLink: ['/list/watchList'] },
     ];
-    // this.itemsMenu = [
-    //   { label: 'Now Playing', routerLink: ['/movies/nowPlayingMovies'], routerLinkActiveOptions: { exact: true } },
-    //   { label: 'Popular', routerLink: ['/movies/popularMovies'], routerLinkActiveOptions: { exact: true } },
-    //   { label: 'Top Rated', routerLink: ['/movies/topRatedMovies'], routerLinkActiveOptions: { exact: true } },
-    //   { label: 'Upcoming', routerLink: ['/movies/upcomingMovies'], routerLinkActiveOptions: { exact: true } }
-    // ];
+    this.itemsMenu = [
+      { label: 'Now Playing',  icon: 'pi pi-plus', routerLink: ['/movies/nowPlayingMovies']},
+      { label: 'Popular',  icon: 'pi pi-plus', routerLink: ['/movies/popularMovies']},
+      { label: 'Top Rated',  icon: 'pi pi-plus', routerLink: ['/movies/topRatedMovies']},
+      { label: 'Upcoming',  icon: 'pi pi-plus', routerLink: ['/movies/upcomingMovies']}
+    ];
   }
 }

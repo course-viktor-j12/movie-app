@@ -6,14 +6,19 @@
         <p>{{ inputData.overview | rowLength:100 }}</p>
         <!-- <p><i>Duration: {{ inputData.duration | transformTime }}</i></p> -->
         <ng-template pTemplate="footer">
-            <div class="flex mt-1">
-                <p-button label="watchList" severity="secondary" class="w-full" styleClass="w-full" (click)="addToWatchList()">
+            <div class="flex mt-1" *ngIf="catalog !== 'favorites' && catalog !== 'watchList'">
+                <p-button label="watchList" severity="secondary" class="w-full" (click)="addToWatchList()">
                     <i class="pi pi-plus-circle" style="color: white"></i>
                 </p-button>
-                <p-button label="favorites" class="w-full" styleClass="w-full" (click)="addToFavorites()" >
+                <p-button label="favorites" class="w-full" class="w-full" (click)="addToFavorites()" >
                     <i class="pi pi-plus-circle" style="color: white"></i>
                 </p-button>
             </div>
+            <!-- <ng-template #removeTemplate>
+                <p-button label="remove" severity="danger" class="w-full" (click)="removeMovie()">
+                    <i class="pi pi-trash" style="color: white"></i>
+                </p-button>
+            </ng-template> -->
         </ng-template>
     </p-card>
 </div>
