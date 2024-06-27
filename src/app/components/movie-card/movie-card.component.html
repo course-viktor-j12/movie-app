@@ -1,19 +1,24 @@
 <div class="block-content">
     <p-card [header]="inputData.title" [style]="{ width: '360px' }">
         <ng-template pTemplate="header">
-            <img [src]="inputData.poster_path" alt="inputData.title" />
+            <img [src]="'https://image.tmdb.org/t/p/w500/' + inputData.poster_path" alt="inputData.title" />
         </ng-template>
-        <p>{{ inputData.overview | rowLength:120 }}</p>
-        <p><i>Duration: {{ inputData.duration | transformTime }}</i></p>
+        <p>{{ inputData.overview | rowLength:100 }}</p>
+        <!-- <p><i>Duration: {{ inputData.duration | transformTime }}</i></p> -->
         <ng-template pTemplate="footer">
-            <div class="flex mt-1">
-                <p-button label="watchList" severity="secondary" class="w-full" styleClass="w-full" (click)="addToWatchList()">
+            <div class="flex mt-1" *ngIf="catalog !== 'favorites' && catalog !== 'watchList'">
+                <p-button label="watchList" severity="secondary" class="w-full" (click)="addToWatchList()">
                     <i class="pi pi-plus-circle" style="color: white"></i>
                 </p-button>
-                <p-button label="favorites" class="w-full" styleClass="w-full" (click)="addToFavorites()" >
+                <p-button label="favorites" class="w-full" class="w-full" (click)="addToFavorites()" >
                     <i class="pi pi-plus-circle" style="color: white"></i>
                 </p-button>
             </div>
+            <!-- <ng-template #removeTemplate>
+                <p-button label="remove" severity="danger" class="w-full" (click)="removeMovie()">
+                    <i class="pi pi-trash" style="color: white"></i>
+                </p-button>
+            </ng-template> -->
         </ng-template>
     </p-card>
 </div>

@@ -1,0 +1,22 @@
+<div class="header">
+    <div class="header-logo">
+        <h2>logo</h2>
+    </div>
+    <div class="header-tabs">
+        <p-tabMenu [model]="items" />
+    </div>
+</div>
+<div class="main">
+    <div class="main-menu">
+        <!-- <p-menu [model]="itemsMenu"></p-menu> -->
+        <ul>
+            <li [routerLink]="['/movies/nowPlayingMovies']" routerLinkActive="router-link-active" >Now Plaing</li>
+            <li [routerLink]="['/movies/popularMovies']" routerLinkActive="router-link-active" >Popular</li>
+            <li [routerLink]="['/movies/topRatedMovies']" routerLinkActive="router-link-active" >Top Rate</li>
+            <li [routerLink]="['/movies/upcomingMovies']" routerLinkActive="router-link-active" >Upcoming</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>
