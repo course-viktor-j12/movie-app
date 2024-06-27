@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { mockData } from '../../../mock-data-my';
-import { Movie, MovieMy } from '../../interfaces/interfaces';
+import { Movie } from '../../interfaces/movie.interface';
 import { CardModule } from 'primeng/card';
 import { TransformTimePipe } from '../../pipes/transformTime/transform-time.pipe';
 import { RowLengthPipe } from '../../pipes/rowLength/row-length.pipe';

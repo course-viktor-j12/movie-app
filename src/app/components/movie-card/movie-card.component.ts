@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RowLengthPipe } from '../../pipes/rowLength/row-length.pipe';
 import { TransformTimePipe } from '../../pipes/transformTime/transform-time.pipe';
-import { Movie, MovieMy } from '../../interfaces/interfaces';
+import { Movie } from '../../interfaces/movie.interface';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ActivatedRoute } from '@angular/router';
@@ -18,10 +18,10 @@ export class MovieCardComponent{
   @Input() inputData!: Movie;
   @Output() addWatchList = new EventEmitter<Movie>();
   @Output() addFavorites = new EventEmitter<Movie>();
-  catalog!: string;
+  catalog!: string | null;
   
   constructor(private route: ActivatedRoute) {
-    this.catalog = this.route.snapshot.paramMap.get('path') as string;
+    this.catalog = this.route.snapshot.paramMap.get('path');
   }
   addToWatchList() {
     this.addWatchList.emit(this.inputData);
