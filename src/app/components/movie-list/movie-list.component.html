@@ -1,40 +1,7 @@
 <div class="container-card">
     <div *ngFor="let movie of data; trackBy: trackById">
-        <app-movie-card [inputData]="movie" (addFavorites)="handleAddFavorites($event)"
-            (addWatchList)="handleAddWatchLists($event)">
+        <app-movie-card [inputData]="movie" (addWatchList)="addToWatchList(movie)" [catalog]="path" (addFavorites)="addToFavorites(movie)">
             Movie:
         </app-movie-card>
     </div>
 </div>
-<!-- <div class="footer-block">
-    <div class="movie-watchList">
-        <h2>WatchLists</h2>
-        <div *ngFor="let watchList of watchLists; trackBy: trackById">
-            <div class="watchList-item">
-                <div class="watchList-img-block">
-                    <img [src]="watchList.poster_path" alt="watchList.title" />
-                </div>
-                <div class="watchList-content-block">
-                    <h5>{{ watchList.title }}</h5>
-                    <p>{{watchList.overview | rowLength:50}}</p>
-                </div>
-            </div>
-        </div>
-        <p *ngIf="watchLists.length === 0">No movies in watch list yet.</p>
-    </div>
-    <div class="movie-favorites">
-        <h2>Favorites</h2>
-        <div *ngFor="let favorite of favorites; trackBy: trackById">
-            <div class="favorite-item">
-                <div class="favorite-img-block">
-                    <img [src]="favorite.poster_path" alt="favorite.title" />
-                </div>
-                <div class="favorite-content-block">
-                    <h5>{{ favorite.title }}</h5>
-                    <p>{{favorite.overview | rowLength:50}}</p>
-                </div>
-            </div>
-        </div>
-        <p *ngIf="favorites.length === 0">No favorites added yet.</p>
-    </div>
-</div> -->

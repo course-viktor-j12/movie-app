@@ -1,6 +1,6 @@
 <div class="header">
     <div class="header-logo">
-        <h2>logo</h2>
+        <h2><a [routerLink]="['/']" routerLinkActive="router-link-active" alt="logo">logo</a></h2>
     </div>
     <div class="header-tabs">
         <p-tabMenu [model]="items" />
@@ -8,18 +8,14 @@
 </div>
 <div class="main">
     <div class="main-menu">
-        <!-- <p-menu [model]="itemsMenu"></p-menu> -->
+        <!-- <p-menu [model]="itemsMenu" /> -->
         <ul>
-            <li><a [routerLink]="['/movies/nowPlayingMovies']" routerLinkActive="router-link-active">Now Playing</a></li>
-            <li><a [routerLink]="['/movies/popularMovies']" routerLinkActive="router-link-active">Popular</a></li>
-            <li><a [routerLink]="['/movies/topRatedMovies']" routerLinkActive="router-link-active">Top Rated</a></li>
-            <li><a [routerLink]="['/movies/upcomingMovies']" routerLinkActive="router-link-active">Upcoming</a></li>
+            <li *ngFor="let item of itemsMenu">
+                <a [routerLink]="item.routerLink" routerLinkActive="router-link-active">{{ item.label }}</a>
+            </li>
         </ul>
     </div>
     <div class="main-content">
         <router-outlet></router-outlet>
     </div>
 </div>
-<app-movie-details-page>
-
-</app-movie-details-page>

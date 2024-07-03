@@ -1,1 +1,12 @@
-<p>movie-details-page works!</p>
+<div class="container-ditail-movie" *ngIf="movie; else notFound">
+    <div>
+        <img [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path" alt="inputData.title" />
+    </div>
+    <div >
+        <h2>{{movie.title}}</h2>
+        <h3>{{movie.overview}}</h3>
+    </div>
+</div>
+<ng-template #notFound>
+    <p>Movie not found.</p>
+</ng-template>
