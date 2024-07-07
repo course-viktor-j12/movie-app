@@ -10,7 +10,7 @@
     <div class="main-menu">
         <!-- <p-menu [model]="itemsMenu" /> -->
         <ul>
-            <li *ngFor="let item of itemsMenu">
+            <li *ngFor="let item of itemsMenu; trackBy: trackByLabel">
                 <a [routerLink]="item.routerLink" routerLinkActive="router-link-active">{{ item.label }}</a>
             </li>
         </ul>

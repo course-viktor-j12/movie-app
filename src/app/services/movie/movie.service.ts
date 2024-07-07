@@ -36,7 +36,7 @@ export class MovieService {
   }
   
   addFavoriteMovie(movie: Movie): void {
-    if (!this.favoritesMovies.some(fav => fav.id === movie.id)) {
+    if (!this.favoritesMovies.includes(movie)) {
       this.favoritesMovies.push(movie);
     }
   }
@@ -50,11 +50,11 @@ export class MovieService {
   }
 
   addWatchListMovie(movie: Movie): void {
-    if (!this.watchListsMovies.some(watch => watch.id === movie.id)) {
+    if (!this.watchListsMovies.includes(movie)) {
       this.watchListsMovies.push(movie);
     }
   }
-  deleteFromWatchList(movie: Movie): void{
-    this.watchListsMovies = this.watchListsMovies.filter(watch => watch.id!== movie.id);
+  deleteFromWatchListMovies(movie: Movie): void{
+    this.watchListsMovies = this.watchListsMovies.filter(watch => watch.id !== movie.id);
   }
-}
+  }

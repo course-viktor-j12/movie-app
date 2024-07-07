@@ -27,6 +27,9 @@ export class MovieMainPageComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
   itemsMenu: MenuItem[] | undefined;
   items: MenuItem[] | undefined;
+  public trackByLabel(index: number, item: MenuItem): number {
+    return index;
+  }
   ngOnInit(): void {
     this.items = [
       {

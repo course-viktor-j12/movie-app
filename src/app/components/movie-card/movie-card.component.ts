@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RowLengthPipe } from '../../pipes/rowLength/row-length.pipe';
 import { TransformTimePipe } from '../../pipes/transformTime/transform-time.pipe';
 import { Movie } from '../../interfaces/movie.interface';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { MovieService } from '../../services/movie/movie.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -20,7 +21,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
 })
-export class MovieCardComponent {
+export class MovieCardComponent implements OnInit{
   @Input() inputData!: Movie;
   @Input() catalog!: string;
   @Output() addWatchList = new EventEmitter<Movie>();
@@ -28,8 +29,12 @@ export class MovieCardComponent {
   
   constructor(
     private route: ActivatedRoute, 
-    private router: Router) {
+    private router: Router,
+    private  movieService: MovieService) {
     }
+  ngOnInit(): void {
+    console.log(this.catalog);
+  }
 
   addToWatchList(): void {
     this.addWatchList.emit(this.inputData);
@@ -40,5 +45,12 @@ export class MovieCardComponent {
   }
   navigateToDetails(id: number): void {
     this.router.navigate(['movie', this.inputData.id]);
+  }
+  deleteFrom(movie: Movie){
+    if(this.catalog === 'watchList'){
+      this.movieService.deleteFromWatchListMovies(movie)
+    } else if(this.catalog === 'favorites'){
+      this.movieService.deleteFromFavoriteMovies(movie)
+    }
   }
 }
