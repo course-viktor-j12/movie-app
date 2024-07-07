@@ -1,4 +1,4 @@
-import { MovieMy } from "./app/interfaces/interfaces";
+import { MovieMy } from "./app/interfaces/movie.interface";
 
 export const mockData: MovieMy[]= [
   {

@@ -17,8 +17,11 @@
     text-align: center;
 }
 img{
+    position: relative;
     max-width: 100px;
+    cursor: pointer;
 }
+
 :host ::ng-deep .p-card-title{
     min-height: 54px;
 }

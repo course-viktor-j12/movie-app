@@ -1,14 +1,3 @@
-export interface MovieMy {
-  id: number;
-  title: string;
-  overview: string;
-  duration: number;
-  release_date: string;
-  vote_average: number;
-  poster_path: string;
-  backdrop_path: string;
-  popularity: number;
-}
 export interface Movie {
   adult: boolean;
   backdrop_path: string;
@@ -25,3 +14,14 @@ export interface Movie {
   vote_average: number;
   vote_count: number;
 }
+// export interface MovieMy {
+//   id: number;
+//   title: string;
+//   overview: string;
+//   duration: number;
+//   release_date: string;
+//   vote_average: number;
+//   poster_path: string;
+//   backdrop_path: string;
+//   popularity: number;
+// }
