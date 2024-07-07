@@ -1,1 +1,7 @@
-<app-movie-list [data]="data"></app-movie-list>
+<div *ngIf="(watchListMovies$ | async) as movies; else loading">
+    <app-movie-list [data]="movies"></app-movie-list>
+  </div>
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+  

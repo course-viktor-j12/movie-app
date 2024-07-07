@@ -30,10 +30,11 @@ export class MovieCardComponent implements OnInit{
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
-    private  movieService: MovieService) {
+    private movieService: MovieService) {
     }
   ngOnInit(): void {
     console.log(this.catalog);
+    
   }
 
   addToWatchList(): void {

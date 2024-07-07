@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie/movie.service';
 import { Movie } from '../../interfaces/movie.interface';
 import { MovieListComponent } from '../../components/movie-list/movie-list.component';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [MovieListComponent],
+  imports: [MovieListComponent, CommonModule],
   templateUrl: './favorites.component.html',
-  styleUrl: './favorites.component.scss'
+  styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
+  favoritesMovies$!: Observable<Movie[]>;
+
   constructor(private movieService: MovieService) { }
 
-  public data: Movie[] = [];
-
   ngOnInit(): void {
-    this.data = this.movieService.getFavoritesMovies();
+    this.favoritesMovies$ = this.movieService.getFavoritesMovies();
   }
 }
