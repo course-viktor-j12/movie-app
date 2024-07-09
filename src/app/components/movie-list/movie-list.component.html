@@ -1,6 +1,6 @@
 <div class="container-card">
     <div *ngFor="let movie of data; trackBy: trackById">
-        <app-movie-card [inputData]="movie" (addWatchList)="addToWatchList(movie)" [catalog]="path" (addFavorites)="addToFavorites(movie)">
+        <app-movie-card [inputData]="movie" [catalog]="path">
             Movie:
         </app-movie-card>
     </div>

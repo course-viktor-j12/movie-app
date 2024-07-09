@@ -1,7 +1,14 @@
-<div *ngIf="(favoritesMovies$ | async) as movies; else loading">
-    <app-movie-list [data]="movies"></app-movie-list>
+  <div *ngIf="(favoritesMovies$ | async) as movies; else loading">
+    <div *ngIf="movies.length > 0; else emptyList">
+      <app-movie-list [data]="movies"></app-movie-list>
+    </div>
   </div>
+  
   <ng-template #loading>
     <p>Loading...</p>
+  </ng-template>
+  
+  <ng-template #emptyList>
+    <p>List is empty</p>
   </ng-template>
   

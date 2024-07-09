@@ -17,10 +17,7 @@ import { MovieService } from '../../services/movie/movie.service';
 export class MovieListComponent implements OnInit {
   @Input() data!: Movie[];
   public path: string = '';
-  constructor(
-    private route: ActivatedRoute, 
-    private movieService: MovieService) {
-  }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.url.subscribe((segments: UrlSegment[]) => {
@@ -32,14 +29,6 @@ export class MovieListComponent implements OnInit {
 
   public trackById(index: number, item: Movie): number {
     return item.id;
-  }
-
-  addToWatchList(movie: Movie) {
-    this.movieService.addWatchListMovie(movie);
-  }
-
-  addToFavorites(movie: Movie) {
-    this.movieService.addFavoriteMovie(movie);
   }
 }
 

@@ -65,5 +65,13 @@
     }
     .main-content{
         width: 100%;
+        p.loading{
+            text-align: center;
+            font-size: 45px;
+        }
+    }
+    .main-content > p.loading{
+        text-align: center;
+        font-size: 45px;
     }
 }

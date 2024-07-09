@@ -7,10 +7,10 @@
         <!-- <p>{{ inputData.overview | rowLength:100 }}</p> -->
         <ng-template pTemplate="footer">
             <div class="flex mt-1" *ngIf="catalog !== 'favorites' && catalog !== 'watchList'; else remove">
-                <p-button label="watchList" severity="secondary" class="w-full" (click)="addToWatchList()">
+                <p-button label="watchList" severity="secondary" class="w-full" (click)="addToWatchList(inputData)">
                     <i class="pi pi-plus-circle" style="color: white"></i>
                 </p-button>
-                <p-button label="favorites" class="w-full" (click)="addToFavorites()">
+                <p-button label="favorites" class="w-full" (click)="addToFavorites(inputData)">
                     <i class="pi pi-plus-circle" style="color: white"></i>
                 </p-button>
             </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { nowPlayingMovies, popularMovies, topRatedMovies, upcomingMovies } from '../../../mock-data';
-import { Movie } from '../../interfaces/movie.interface';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Movie, MovieData } from '../../interfaces/movie.interface';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,26 +12,29 @@ export class MovieService {
   private watchListsMovies: Movie[] = [];
   private watchListsMoviesSubject = new BehaviorSubject<Movie[]>([]);
 
-  constructor() { }
+  apiKey = '?api_key=a66e14aac3918847e798bf6247df6743';
+  baseApiUrl = 'https://api.themoviedb.org/3/movie';
 
-  getNowPlayingMovies(): Movie[] {
-    return nowPlayingMovies;
+  constructor(private httpClient: HttpClient) {}
+
+  getNowPlayingMovies(): Observable<MovieData> {
+   return this.httpClient.get<MovieData>(`${this.baseApiUrl}/now_playing${this.apiKey}`);
   }
 
-  getPopularMovies(): Movie[] {
-    return popularMovies;
+  getPopularMovies(): Observable<MovieData> {
+    return this.httpClient.get<MovieData>(`${this.baseApiUrl}/popular${this.apiKey}`);
   }
 
-  getTopRatedMovies(): Movie[] {
-    return topRatedMovies;
+  getTopRatedMovies(): Observable<MovieData> {
+    return this.httpClient.get<MovieData>(`${this.baseApiUrl}/top_rated${this.apiKey}`);
   }
 
-  getUpcomingMovies(): Movie[] {
-    return upcomingMovies;
+  getUpcomingMovies(): Observable<MovieData> {
+    return this.httpClient.get<MovieData>(`${this.baseApiUrl}/upcoming${this.apiKey}`);
   }
 
-  getAllMovies(): Movie[] {
-    return [...nowPlayingMovies, ...popularMovies, ...topRatedMovies, ...upcomingMovies];
+  getDetailMovie(movieId: number): Observable<Movie> {
+    return this.httpClient.get<Movie>(`${this.baseApiUrl}/${movieId}${this.apiKey}`);
   }
 
   getFavoritesMovies(): Observable<Movie[]> {

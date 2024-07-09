@@ -12,23 +12,24 @@ import { CommonModule } from '@angular/common';
   styleUrl: './movie-details-page.component.scss',
 })
 export class MovieDetailsPageComponent implements OnInit {
+  public movie!: Movie;
+
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService
   ) {}
-  public data: Movie[] = [];
-  public movie: Movie | undefined;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
       const pathId = Number(id);
-      this.data = this.movieService.getAllMovies();
-      this.movie = this.data.find(movie => movie.id === pathId);
-      console.log(this.movie);
-      
+      this.movieService.getDetailMovie(pathId).subscribe({
+        next: (data) => this.movie = data,
+        error: (error) => {
+          console.error('Something went wrong:', error);
+        }
+      })        
     }
-    
   }
 }

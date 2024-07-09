@@ -5,7 +5,7 @@ import { TransformTimePipe } from '../../pipes/transformTime/transform-time.pipe
 import { Movie } from '../../interfaces/movie.interface';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { MovieService } from '../../services/movie/movie.service';
 
 @Component({
@@ -24,25 +24,21 @@ import { MovieService } from '../../services/movie/movie.service';
 export class MovieCardComponent implements OnInit{
   @Input() inputData!: Movie;
   @Input() catalog!: string;
-  @Output() addWatchList = new EventEmitter<Movie>();
-  @Output() addFavorites = new EventEmitter<Movie>();
   
   constructor(
-    private route: ActivatedRoute, 
     private router: Router,
     private movieService: MovieService) {
     }
   ngOnInit(): void {
     console.log(this.catalog);
-    
   }
 
-  addToWatchList(): void {
-    this.addWatchList.emit(this.inputData);
+  addToWatchList(inputData: Movie): void {
+    this.movieService.addWatchListMovie(inputData);
   }
 
-  addToFavorites(): void {
-    this.addFavorites.emit(this.inputData);
+  addToFavorites(inputData: Movie): void {
+    this.movieService.addFavoriteMovie(inputData);
   }
   navigateToDetails(id: number): void {
     this.router.navigate(['movie', this.inputData.id]);
