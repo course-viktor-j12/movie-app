@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie/movie.service';
 import { Movie } from '../../interfaces/movie.interface';
 import { MovieListComponent } from '../../components/movie-list/movie-list.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-popular-movie-page',
   standalone: true,
-  imports: [MovieListComponent],
+  imports: [MovieListComponent, CommonModule],
   templateUrl: './popular-movie-page.component.html',
   styleUrl: './popular-movie-page.component.scss'
 })
@@ -16,6 +17,13 @@ export class PopularMoviePageComponent implements OnInit {
   public data: Movie[] = [];
 
   ngOnInit(): void {
-    this.data = this.movieService.getPopularMovies();
+    this.movieService.getPopularMovies().subscribe({
+      next: (dataApi) => {
+        this.data = dataApi.results;
+      },
+      error: (error) => {
+        console.error('Something went wrong:', error);
+      }
+    });
   }
 }

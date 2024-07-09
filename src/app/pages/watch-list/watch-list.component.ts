@@ -2,20 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie/movie.service';
 import { Movie } from '../../interfaces/movie.interface';
 import { MovieListComponent } from '../../components/movie-list/movie-list.component';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-watch-list',
   standalone: true,
-  imports: [MovieListComponent],
+  imports: [MovieListComponent, CommonModule],
   templateUrl: './watch-list.component.html',
-  styleUrl: './watch-list.component.scss'
+  styleUrls: ['./watch-list.component.scss']
 })
 export class WatchListComponent implements OnInit {
+  watchListMovies$!: Observable<Movie[]>;
+
   constructor(private movieService: MovieService) { }
 
-  public data: Movie[] = [];
-
   ngOnInit(): void {
-    this.data = this.movieService.getWatchListMovies();
+    this.watchListMovies$ = this.movieService.getWatchListMovies();
   }
 }
