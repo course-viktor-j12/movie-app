@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./watch-list.component.scss']
 })
 export class WatchListComponent implements OnInit {
-  watchListMovies$!: Observable<Movie[]>;
+  public watchListMovies$!: Observable<Movie[]>;
 
   constructor(private movieService: MovieService) { }
 
