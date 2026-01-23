@@ -7,6 +7,7 @@ import { TopRAteMoviePageComponent } from './pages/top-rate-movie-page/top-rate-
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { WatchListComponent } from './pages/watch-list/watch-list.component';
 import { MovieDetailsPageComponent } from './pages/movie-details-page/movie-details-page.component';
+import { AdminPanelComponent } from './pages/admin-panel/admin-panel.component';
 
 export const routes: Routes = [
     {
@@ -40,6 +41,10 @@ export const routes: Routes = [
     {
         path: 'movies/watchList',
         component: WatchListComponent
+    },
+    {
+        path: 'admin',
+        component: AdminPanelComponent,
     },
     {
         path: '**',

@@ -4,16 +4,12 @@
     </div>
     <div class="header-tabs">
         <p-tabMenu [model]="items"></p-tabMenu>
+        <a [routerLink]="['/admin']" class="admin-link">Admin Panel</a>
     </div>
 </div>
 <div class="main">
     <div class="main-menu">
         <p-menu [model]="itemsMenu" />
-        <!-- <ul>
-            <li *ngFor="let item of itemsMenu; trackBy: trackByLabel">
-                <a [routerLink]="item.routerLink" routerLinkActive="router-link-active">{{ item.label }}</a>
-            </li>
-        </ul> -->
     </div>
     <div class="main-content">
         <router-outlet></router-outlet>
