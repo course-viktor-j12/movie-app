@@ -5,6 +5,8 @@ import { TransformTimePipe } from '../../pipes/transformTime/transform-time.pipe
 import { Movie } from '../../interfaces/movie.interface';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MovieService } from '../../services/movie/movie.service';
 
@@ -17,6 +19,8 @@ import { MovieService } from '../../services/movie/movie.service';
     TransformTimePipe,
     CardModule,
     ButtonModule,
+    RatingModule,
+    FormsModule,
   ],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
@@ -25,12 +29,17 @@ export class MovieCardComponent implements OnInit{
   @Input() inputData!: Movie;
   @Input() catalog!: string;
   
+  rating: number = 0;
+  
   constructor(
     private router: Router,
     private movieService: MovieService) {
     }
+    
   ngOnInit(): void {
     console.log(this.catalog);
+    // Розраховуємо рейтинг на основі vote_average (0-10 -> 0-5)
+    this.rating = Math.round((this.inputData.vote_average / 10) * 5 * 2) / 2;
   }
 
   addToWatchList(inputData: Movie): void {
@@ -40,9 +49,11 @@ export class MovieCardComponent implements OnInit{
   addToFavorites(inputData: Movie): void {
     this.movieService.addFavoriteMovie(inputData);
   }
+  
   navigateToDetails(id: number): void {
     this.router.navigate(['movie', this.inputData.id]);
   }
+  
   deleteFrom(movie: Movie){
     if(this.catalog === 'watchList'){
       this.movieService.deleteFromWatchListMovies(movie)
