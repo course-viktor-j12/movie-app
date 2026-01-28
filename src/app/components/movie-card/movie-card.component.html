@@ -1,5 +1,5 @@
 <div class="block-content">
-    <p-card [header]="inputData.title" [style]="{ width: '100%', 'max-width': '200px' }">
+    <p-card [header]="inputData.title">
         <ng-template pTemplate="header">
             <img [src]="'https://image.tmdb.org/t/p/w500/' + inputData.poster_path" alt="inputData.title"
                 (click)="navigateToDetails(inputData.id)" />
