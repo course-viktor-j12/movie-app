@@ -38,7 +38,6 @@ export class MovieCardComponent implements OnInit{
     
   ngOnInit(): void {
     console.log(this.catalog);
-    // Розраховуємо рейтинг на основі vote_average (0-10 -> 0-5)
     this.rating = Math.round((this.inputData.vote_average / 10) * 5 * 2) / 2;
   }
 
