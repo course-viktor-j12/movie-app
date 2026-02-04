@@ -23,9 +23,9 @@ export class MovieListComponent implements OnInit {
     this.route.url.subscribe((segments: UrlSegment[]) => {
       if (segments.length > 1) {
         this.path = segments[1].path;
-      }
+    }
     });
-  }
+}
 
   public trackById(index: number, item: Movie): number {
     return item.id;
