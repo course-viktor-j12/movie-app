@@ -1,1 +1,6 @@
-<app-movie-list [data]="data"></app-movie-list>
+<div *ngIf="data && data.length > 0; else loading">
+    <app-movie-list [data]="data"></app-movie-list>
+</div>
+<ng-template #loading>
+    <p class="loading">Loading...</p>
+  </ng-template>

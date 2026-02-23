@@ -1,0 +1,57 @@
+<div class="admin-panel">
+  <h1>Admin Panel</h1>
+
+  <div class="add-movie-form">
+    <h2>{{ isEditing ? 'Edit Movie' : 'Add New Movie' }}</h2>
+    <form (ngSubmit)="isEditing ? saveMovie() : addMovie()">
+      <input
+        type="text"
+        placeholder="Title"
+        [(ngModel)]="newMovie.title"
+        name="title"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Overview"
+        [(ngModel)]="newMovie.overview"
+        name="overview"
+      />
+      <input
+        type="number"
+        placeholder="Vote Average"
+        [(ngModel)]="newMovie.vote_average"
+        name="vote_average"
+      />
+      <button type="submit">{{ isEditing ? 'Update' : 'Add' }}</button>
+      <button type="button" (click)="cancel()" *ngIf="isEditing">Cancel</button>
+    </form>
+  </div>
+
+  <div class="movies-list">
+    <h2>Movies</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Overview</th>
+          <th>Vote Average</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of movies">
+          <td>{{ movie.id }}</td>
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.overview | slice : 0 : 50 }}...</td>
+          <td>{{ movie.vote_average }}</td>
+          <td>
+            <button (click)="editMovie(movie)">Edit</button>
+            <button (click)="deleteMovie(movie.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -5,7 +5,9 @@ import { TransformTimePipe } from '../../pipes/transformTime/transform-time.pipe
 import { Movie } from '../../interfaces/movie.interface';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { RatingModule } from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MovieService } from '../../services/movie/movie.service';
 
 @Component({
@@ -17,6 +19,8 @@ import { MovieService } from '../../services/movie/movie.service';
     TransformTimePipe,
     CardModule,
     ButtonModule,
+    RatingModule,
+    FormsModule,
   ],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
@@ -24,28 +28,31 @@ import { MovieService } from '../../services/movie/movie.service';
 export class MovieCardComponent implements OnInit{
   @Input() inputData!: Movie;
   @Input() catalog!: string;
-  @Output() addWatchList = new EventEmitter<Movie>();
-  @Output() addFavorites = new EventEmitter<Movie>();
+  
+  rating: number = 0;
   
   constructor(
-    private route: ActivatedRoute, 
     private router: Router,
-    private  movieService: MovieService) {
+    private movieService: MovieService) {
     }
+    
   ngOnInit(): void {
     console.log(this.catalog);
+    this.rating = Math.round((this.inputData.vote_average / 10) * 5 * 2) / 2;
   }
 
-  addToWatchList(): void {
-    this.addWatchList.emit(this.inputData);
+  addToWatchList(inputData: Movie): void {
+    this.movieService.addWatchListMovie(inputData);
   }
 
-  addToFavorites(): void {
-    this.addFavorites.emit(this.inputData);
+  addToFavorites(inputData: Movie): void {
+    this.movieService.addFavoriteMovie(inputData);
   }
+  
   navigateToDetails(id: number): void {
     this.router.navigate(['movie', this.inputData.id]);
   }
+  
   deleteFrom(movie: Movie){
     if(this.catalog === 'watchList'){
       this.movieService.deleteFromWatchListMovies(movie)

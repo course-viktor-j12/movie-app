@@ -1,7 +1,18 @@
 <div class="container-card">
-    <div *ngFor="let movie of data; trackBy: trackById">
-        <app-movie-card [inputData]="movie" (addWatchList)="addToWatchList(movie)" [catalog]="path" (addFavorites)="addToFavorites(movie)">
-            Movie:
-        </app-movie-card>
-    </div>
+  <div *ngFor="let movie of pagedData; trackBy: trackById">
+    <app-movie-card
+      [inputData]="movie"
+      [catalog]="path">
+    </app-movie-card>
+  </div>
 </div>
+
+<p-paginator 
+  *ngIf="showPaginator"
+  class="mt-4 flex justify-center"
+  [first]="first"
+  [rows]="rows"
+  [totalRecords]="totalRecords"
+  [rowsPerPageOptions]="[3, 5]"
+  (onPageChange)="onPageChange($event)">
+</p-paginator>
